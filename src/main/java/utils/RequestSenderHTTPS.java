@@ -11,12 +11,12 @@ import static com.jayway.restassured.RestAssured.given;
 
 public class RequestSenderHTTPS {
 
-    public static String JSESSIONID = null;
-    public static String ATLASSIAN_TOKEN = null;
-    public static String STUDIO_TOKEN = null;
+    private static String JSESSIONID = null;
+    private static String ATLASSIAN_TOKEN = null;
+    private static String STUDIO_TOKEN = null;
 
-    public final static ContentType CONTENT_TYPE = ContentType.JSON;
-    public static RequestSpecification requestSpecification = null;
+    private final static ContentType CONTENT_TYPE = ContentType.JSON;
+    private static RequestSpecification requestSpecification = null;
     public static Response response = null;
 
     public void authenticate(){

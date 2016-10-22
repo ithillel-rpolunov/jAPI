@@ -4,11 +4,11 @@
            failures="0"
            errors="0"
            skipped="0"
-           time="3,017">
+           time="25,157">
   <properties />
   
   
-            <testcase name="login" time="1,425" classname="IssueHTTPS" />
-                <testcase name="SearchIssueHTTPS" time="1,592" classname="IssueHTTPS" />
+            <testcase name="login" time="23,462" classname="IssueHTTPS" />
+                <testcase name="SearchIssueHTTPS" time="1,695" classname="IssueHTTPS" />
       
 </testsuite>

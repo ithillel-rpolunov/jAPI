@@ -12,72 +12,11 @@
 <body>
 <h1>Issue</h1>
 <p>
-  Test duration: 7,817s
+  Test duration: 22,442s
 </p>
 
 
 
-  <table class="resultsTable">
-    <tr><th colspan="3" class="header failed">Failed Tests</th></tr>
-          <tr>
-        <td colspan="3" class="group">IssueHTTPS</td>
-      </tr>
-            
-<tr>
-  <td class="method">
-                  deleteIssue
-      </td>
-  <td class="duration">
-    0,018s
-  </td>
-  <td class="result">
-        
-    
-        
-
-        <a href="javascript:toggleElement('exception-0', 'block')" title="Click to expand/collapse"><b>java.util.ConcurrentModificationException</b></a><br />
-    <div class="stackTrace" id="exception-0">
-              java.util.ArrayList$Itr.checkForComodification(ArrayList.java:901)<br />
-              java.util.ArrayList$Itr.next(ArrayList.java:851)<br />
-              java_util_Iterator$next$0.call(Unknown Source)<br />
-              com.jayway.restassured.internal.filter.FilterContextImpl.next(FilterContextImpl.groovy:71)<br />
-              com.jayway.restassured.filter.FilterContext$next.call(Unknown Source)<br />
-              com.jayway.restassured.internal.RequestSpecificationImpl.applyPathParamsAndSendRequest(RequestSpecificationImpl.groovy:1596)<br />
-              sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br />
-              sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)<br />
-              sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br />
-              java.lang.reflect.Method.invoke(Method.java:497)<br />
-              org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:93)<br />
-              groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:325)<br />
-              groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1210)<br />
-              groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1019)<br />
-              groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:810)<br />
-              com.jayway.restassured.internal.RequestSpecificationImpl.invokeMethod(RequestSpecificationImpl.groovy)<br />
-              org.codehaus.groovy.runtime.callsite.PogoInterceptableSite.call(PogoInterceptableSite.java:48)<br />
-              org.codehaus.groovy.runtime.callsite.PogoInterceptableSite.callCurrent(PogoInterceptableSite.java:58)<br />
-              org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:182)<br />
-              com.jayway.restassured.internal.RequestSpecificationImpl.post(RequestSpecificationImpl.groovy:164)<br />
-              com.jayway.restassured.internal.RequestSpecificationImpl.post(RequestSpecificationImpl.groovy)<br />
-              utils.RequestSenderHTTPS.post(RequestSenderHTTPS.java:88)<br />
-              apis.IssueAPI.createIsueHTTPS(IssueAPI.java:11)<br />
-              IssueHTTPS.deleteIssue(IssueHTTPS.java:109)<br />
-              sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br />
-              sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)<br />
-              sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br />
-              java.lang.reflect.Method.invoke(Method.java:497)<br />
-              org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)<br />
-              org.testng.internal.Invoker.invokeMethod(Invoker.java:714)<br />
-              org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)<br />
-              org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)<br />
-              org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)<br />
-              org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)<br />
-              java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)<br />
-              java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)<br />
-              java.lang.Thread.run(Thread.java:745)<br />
-                </div>
-      </td>
-</tr>
-      </table>
 
 
   <table class="resultsTable">
@@ -102,10 +41,24 @@
 </tr>
 <tr>
   <td class="method">
+                  deleteIssue
+      </td>
+  <td class="duration">
+    3,891s
+  </td>
+  <td class="result">
+        
+    
+        
+
+      </td>
+</tr>
+<tr>
+  <td class="method">
                   login
       </td>
   <td class="duration">
-    6,060s
+    16,812s
   </td>
   <td class="result">
         
