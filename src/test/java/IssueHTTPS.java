@@ -7,7 +7,6 @@ import utils.RequestSenderHTTPS;
 import java.util.List;
 
 import static com.thoughtworks.selenium.SeleneseTestNgHelper.assertEquals;
-import static io.restassured.path.json.JsonPath.from;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertTrue;
 
@@ -23,20 +22,25 @@ public class IssueHTTPS {
     public void login(){
 
         String sessionID;
-        String ATLASSIAN_TOKEN;
+//        String ATLASSIAN_TOKEN;
         String STUDIO_TOKEN;
         RequestSenderHTTPS requestSenderHTTPS = new RequestSenderHTTPS();
         requestSenderHTTPS.authenticate();
         sessionID = requestSenderHTTPS.extractResponseByPath("session.value");
-        ATLASSIAN_TOKEN = requestSenderHTTPS.response.getCookie("atlassian.xsrf.token");
+//        ATLASSIAN_TOKEN = requestSenderHTTPS.response.getCookie("atlassian.xsrf.token");
         STUDIO_TOKEN = requestSenderHTTPS.response.getCookie("studio.crowd.tokenkey");
+
+        System.out.println("sessionID -> " + sessionID);
+//        System.out.println("ATLASSIAN_TOKEN -> " + ATLASSIAN_TOKEN);
+        System.out.println("STUDIO_TOKEN -> " + STUDIO_TOKEN);
+        System.out.println("---<<<>>>---");
 
         //check
         assertNotNull(sessionID);
-        assertNotNull(ATLASSIAN_TOKEN);
+//        assertNotNull(ATLASSIAN_TOKEN);
         assertNotNull(STUDIO_TOKEN);
 
-//        assertTrue(String.valueOf(requestSenderHTTPS.response.getStatusCode()).equals("200"));
+        assertTrue(String.valueOf(requestSenderHTTPS.response.getStatusCode()).equals("200"));
     }
 
     @Test (groups = {"Issue"}, dependsOnMethods = {"login"} )
@@ -54,7 +58,7 @@ public class IssueHTTPS {
         assertTrue(requestSenderHTTPS.response.getBody().jsonPath().get("self").toString().contains("https://forapitest.atlassian.net"));
     }
 
-    @Test (groups = {"comment"}, dependsOnMethods = {"login"})
+    @Test (groups = {"comment"}, dependsOnMethods = {"login"}, timeOut = 20000)
     public void CommentHTTPS(){
         JiraJSONFixture jiraJSONFixture = new JiraJSONFixture();
         String issue = jiraJSONFixture.generateJSONForSampleIssueHTTPS();
@@ -63,11 +67,11 @@ public class IssueHTTPS {
 
         RequestSenderHTTPS requestSenderHTTPS = issueAPI.createIsueHTTPS(issue);
 
-        String id = "10056";
-//        String id =requestSenderHTTPS.response.getBody().jsonPath().get("id").toString();
+//        String id = "10056";
+        String id =requestSenderHTTPS.response.getBody().jsonPath().get("id").toString();
+//        System.out.println(id);
 
         String comment = jiraJSONFixture.generateJSONForCommentHTTPS();
-        System.out.println(id);
 
         RequestSenderHTTPS requestSenderHTTPS1 = issueAPI.addCommentHTTPS(comment, id);
 
@@ -85,22 +89,24 @@ public class IssueHTTPS {
 
         RequestSenderHTTPS requestSenderHTTPS = issueAPI.searchHTTPS(searchIssue);
 
-        System.out.println(requestSenderHTTPS.response.getStatusCode());
-        System.out.println(requestSenderHTTPS.response.getBody().jsonPath());
-
-        System.out.println(requestSenderHTTPS.response.asString());
+//        System.out.println(requestSenderHTTPS.response.getStatusCode());
+//        System.out.println(requestSenderHTTPS.response.getBody().jsonPath());
+//
+//        System.out.println(requestSenderHTTPS.response.asString());
 
         List<String> stringList = null;
         String rez = requestSenderHTTPS.response.asString();
+        System.out.println(rez);
 
-        stringList = from(rez).getList("issues.key");
+        stringList = requestSenderHTTPS.response.path("issues.key");
 
         for (String s2 : stringList) {
             System.out.println(s2);
         }
+//
+        assertEquals(requestSenderHTTPS.response.getStatusCode(),200);
+        assertTrue(requestSenderHTTPS.response.getBody().jsonPath().get("issues.key").toString().contains("TES-"));
 
-        Assert.assertEquals(requestSenderHTTPS.response.getStatusCode(),200);
-        Assert.assertTrue(requestSenderHTTPS.response.getBody().jsonPath().get("issues.key").toString().contains("TES-"));
     }
 
 
@@ -113,15 +119,8 @@ public class IssueHTTPS {
 
         RequestSenderHTTPS requestSenderHTTPS = issueAPI.createIsueHTTPS(issue);
 
-//        try {
-//            Thread.sleep(10000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-
         String key = requestSenderHTTPS.response.getBody().jsonPath().get("key").toString();
-        System.out.println(key);
-//
+
         RequestSenderHTTPS requestSenderHTTPS1 = issueAPI.deleteIssueHTTPS(key);
 
         Assert.assertEquals(requestSenderHTTPS1.response.getStatusCode(), 204);

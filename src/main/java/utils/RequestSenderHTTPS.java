@@ -12,7 +12,7 @@ import static com.jayway.restassured.RestAssured.given;
 public class RequestSenderHTTPS {
 
     private static String JSESSIONID = null;
-    private static String ATLASSIAN_TOKEN = null;
+//    private static String ATLASSIAN_TOKEN = null;
     private static String STUDIO_TOKEN = null;
 
     private final static ContentType CONTENT_TYPE = ContentType.JSON;
@@ -25,12 +25,14 @@ public class RequestSenderHTTPS {
         JiraJSONFixture jiraJSONFixture = new JiraJSONFixture();
         String credentials = jiraJSONFixture.generateJSONForLoginHTTPS();
 
-        this.createRequestHTTPS(credentials)
+        RequestSenderHTTPS requestSenderHTTPS = new RequestSenderHTTPS();
+
+        requestSenderHTTPS.createRequestHTTPS(credentials)
                 .post(ApiUrls.LOGIN.getUri());
 
-        this.JSESSIONID = extractResponseByPath("session.value");
-        this.ATLASSIAN_TOKEN = response.getCookie("atlassian.xsrf.token");
-        this.STUDIO_TOKEN = response.getCookie("studio.crowd.tokenkey");
+        requestSenderHTTPS.JSESSIONID = extractResponseByPath("session.value");
+//        requestSenderHTTPS.ATLASSIAN_TOKEN = response.getCookie("atlassian.xsrf.token");
+        requestSenderHTTPS.STUDIO_TOKEN = response.getCookie("studio.crowd.tokenkey");
     }
 
 
@@ -44,7 +46,7 @@ public class RequestSenderHTTPS {
         this.createRequestSpecification()
                 .addHeader("Content-Type", CONTENT_TYPE.toString())
                 .addHeader("Cookie", "JSESSIONID=" + RequestSenderHTTPS.JSESSIONID)
-                .addHeader("Cookie", "atlassian.xsrf.token="+RequestSenderHTTPS.ATLASSIAN_TOKEN)
+//                .addHeader("Cookie", "atlassian.xsrf.token="+RequestSenderHTTPS.ATLASSIAN_TOKEN)
                 .addHeader("Cookie", "studio.crowd.tokenkey="+RequestSenderHTTPS.STUDIO_TOKEN)
                 .addBody(body);
 
@@ -55,7 +57,7 @@ public class RequestSenderHTTPS {
         this.createRequestSpecification()
                 .addHeader("Content-Type", CONTENT_TYPE.toString())
                 .addHeader("Cookie", "JSESSIONID=" + RequestSenderHTTPS.JSESSIONID)
-                .addHeader("Cookie", "atlassian.xsrf.token="+RequestSenderHTTPS.ATLASSIAN_TOKEN)
+//                .addHeader("Cookie", "atlassian.xsrf.token="+RequestSenderHTTPS.ATLASSIAN_TOKEN)
                 .addHeader("Cookie", "studio.crowd.tokenkey="+RequestSenderHTTPS.STUDIO_TOKEN)
                 .delete("");
 
