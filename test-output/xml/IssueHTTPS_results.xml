@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Jira"
-           tests="4"
+<testsuite name="search"
+           tests="2"
            failures="0"
            errors="0"
            skipped="0"
-           time="8,465">
+           time="3,017">
   <properties />
   
   
-            <testcase name="createIssuePositive201HTTPS" time="1,493" classname="IssueHTTPS" />
-                <testcase name="deleteIssue" time="3,983" classname="IssueHTTPS" />
-                <testcase name="CommentHTTPS" time="1,573" classname="IssueHTTPS" />
-                <testcase name="SearchIssueHTTPS" time="1,416" classname="IssueHTTPS" />
+            <testcase name="login" time="1,425" classname="IssueHTTPS" />
+                <testcase name="SearchIssueHTTPS" time="1,592" classname="IssueHTTPS" />
       
 </testsuite>

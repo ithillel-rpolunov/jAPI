@@ -4,9 +4,7 @@ public enum ApiUrls {
 
     LOGIN("/rest/auth/latest/session"),
     ISSUE("/rest/api/latest/issue"),
-    SEARCH("/rest/api/2/search"),
-    baseURI("http://soft.it-hillel.com.ua:8080"),
-    baseURI_new("https://forapitest.atlassian.net");
+    SEARCH("/rest/api/latest/search");
 
     private String uri;
 

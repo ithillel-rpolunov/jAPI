@@ -9,16 +9,6 @@ import fixtures.JiraJSONFixture;
 
 import static com.jayway.restassured.RestAssured.given;
 
-/**
- * import com.jayway.restassured.RestAssured;
- * import com.jayway.restassured.http.ContentType;
- * import com.jayway.restassured.response.Response;
- * import com.jayway.restassured.specification.RequestSpecification;
- * import fixtures.JiraJSONFixture;
- * import static com.jayway.restassured.RestAssured.given;
- */
-
-
 public class RequestSenderHTTPS {
 
     public static String JSESSIONID = null;

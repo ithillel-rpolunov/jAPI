@@ -1,18 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-\\usefull
-<suite name="TestSute1">
+
+<suite name="TestSute1"  parallel="methods" thread-count="4">
 
     <listeners>
         <listener class-name="org.uncommons.reportng.HTMLReporter"/>
         <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
     </listeners>
 
-    <test name="Jira">
+    <test name="Issue">
         <groups>
             <run>
                 <include name="Issue"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="IssueHTTPS"/>
+        </classes>
+    </test>
+
+    <test name="search">
+        <groups>
+            <run>
                 <include name="search"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="IssueHTTPS"/>
+        </classes>
+    </test>
+
+    <test name="comment">
+        <groups>
+            <run>
                 <include name="comment"/>
             </run>
         </groups>

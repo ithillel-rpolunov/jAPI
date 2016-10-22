@@ -2,32 +2,38 @@ package apis;
 
 import utils.RequestSenderHTTPS;
 
-public class IssueAPI extends RequestSenderHTTPS{
+public class IssueAPI {
 
-    RequestSenderHTTPS requestSender = new RequestSenderHTTPS();
-
-    public void createIsueHTTPS(String body){
+    public RequestSenderHTTPS createIsueHTTPS(String body){
+        RequestSenderHTTPS requestSender = new RequestSenderHTTPS();
         requestSender
                 .createRequestHTTPS(body)
                 .post(ApiUrls.ISSUE.getUri());
+        return requestSender;
     }
 
-    public void addCommentHTTPS(String body){
+    public RequestSenderHTTPS addCommentHTTPS(String body, String key){
+        RequestSenderHTTPS requestSender = new RequestSenderHTTPS();
         requestSender
                 .createRequestHTTPS(body)
-                .post(ApiUrls.ISSUE.getUri("10009/comment"));
+                .post(ApiUrls.ISSUE.getUri( key + "/comment"));
+        return requestSender;
     }
 
-    public void deleteIssueHTTPS(String key){
+    public RequestSenderHTTPS deleteIssueHTTPS(String key){
+        RequestSenderHTTPS requestSender = new RequestSenderHTTPS();
         requestSender
                 .createRequestWithoutBodyHTTPS()
                 .delete(ApiUrls.ISSUE.getUri(key));
+        return requestSender;
     }
 
-    public void searchHTTPS(String body){
+    public RequestSenderHTTPS searchHTTPS(String body){
+        RequestSenderHTTPS requestSender = new RequestSenderHTTPS();
         requestSender
                 .createRequestHTTPS(body)
                 .post(ApiUrls.SEARCH.getUri());
+        return requestSender;
     }
 
 }
